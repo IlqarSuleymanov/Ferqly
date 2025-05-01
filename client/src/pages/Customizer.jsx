@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
-import config from '../config/config';
-import state from '../store';
-import { download } from '../assets';
-import { downloadCanvasToImage, reader } from '../config/helpers';
-import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
-import { fadeAnimation, slideAnimation } from '../config/motion';
+import config from '../config/config.js';
+import state from '../store/index.js';
+import { downloadCanvasToImage, reader } from '../config/helpers.js';
+import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants.js';
+import { fadeAnimation, slideAnimation } from '../config/motion.js';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
 
   const [file, setFile] = useState('');
-
   const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
-
   const [activeEditorTab, setActiveEditorTab] = useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
-  })
+  });
 
   // show tab content depending on the activeTab
   const generateTabContent = () => {
@@ -53,7 +50,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+      const response = await fetch(config.development.backendUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +58,7 @@ const Customizer = () => {
         body: JSON.stringify({
           prompt,
         })
-      })
+      });
 
       const data = await response.json();
 
@@ -87,10 +84,10 @@ const Customizer = () => {
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
       case "logoShirt":
-          state.isLogoTexture = !activeFilterTab[tabName];
+        state.isLogoTexture = !activeFilterTab[tabName];
         break;
       case "stylishShirt":
-          state.isFullTexture = !activeFilterTab[tabName];
+        state.isFullTexture = !activeFilterTab[tabName];
         break;
       default:
         state.isLogoTexture = true;
@@ -99,13 +96,12 @@ const Customizer = () => {
     }
 
     // after setting the state, activeFilterTab is updated
-
     setActiveFilterTab((prevState) => {
       return {
         ...prevState,
         [tabName]: !prevState[tabName]
       }
-    })
+    });
   }
 
   const readFile = (type) => {
@@ -113,7 +109,7 @@ const Customizer = () => {
       .then((result) => {
         handleDecals(type, result);
         setActiveEditorTab("");
-      })
+      });
   }
 
   return (
@@ -126,7 +122,7 @@ const Customizer = () => {
             {...slideAnimation('left')}
           >
             <div className="flex items-center min-h-screen">
-              <div className="editortabs-container tabs">
+              <div className="editortabs-container">
                 {EditorTabs.map((tab) => (
                   <Tab 
                     key={tab.name}
@@ -153,7 +149,7 @@ const Customizer = () => {
           </motion.div>
 
           <motion.div
-            className='filtertabs-container'
+            className="filtertabs-container"
             {...slideAnimation("up")}
           >
             {FilterTabs.map((tab) => (
@@ -165,11 +161,20 @@ const Customizer = () => {
                 handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
+            
+            <motion.div className="absolute right-0 bottom-5" {...fadeAnimation}>
+              <CustomButton 
+                type="filled"
+                title="Download"
+                handleClick={downloadCanvasToImage}
+                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+              />
+            </motion.div>
           </motion.div>
         </>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
-export default Customizer
+export default Customizer;
