@@ -1,6 +1,4 @@
-import React from 'react'
-
-import CustomButton from './CustomButton'
+import CustomButton from './CustomButton';
 
 const FilePicker = ({ file, setFile, readFile }) => {
   return (
@@ -36,7 +34,7 @@ const FilePicker = ({ file, setFile, readFile }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FilePicker
+export default FilePicker;
