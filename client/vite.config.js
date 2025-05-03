@@ -1,7 +1,7 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import tailwindcss from '@tailwindcss/vite'; // Add this line
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
@@ -9,6 +9,6 @@ export default defineConfig({
     tailwindcss() 
   ],
   resolve: {
-    extensions:['.js','.jsx','.ts','.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   }
 });
