@@ -5,18 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      spacing: {
-        '20': '5rem', // This adds pl-20 support
-        '8': '2rem',  // For pl-8
-        '6': '1.5rem', // For other spacing values used in your project
-        '10': '2.5rem',
-        '4': '1rem',
-        '5': '1.25rem',
-        '2': '0.5rem',
-        '1': '0.25rem',
-        '2.5': '0.625rem',
-      },
+    extend: {},
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
   },
   plugins: [],

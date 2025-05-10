@@ -21,7 +21,7 @@ body {
   }
 
   .home {
-    @apply w-fit h-full flex flex-col justify-start items-start md:pl-20 pl-8 pt-10 max-xl:pl-8 max-xl:pt-6;
+    @apply w-fit h-full flex flex-col justify-start items-start pl-8 pt-10;
   }
 
   .home-content {
