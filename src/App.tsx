@@ -264,13 +264,15 @@ function ProductCard({ p }: { p: typeof PRODUCTS[0] }) {
 function Kolleksiya() {
   return (
     <section id="kolleksiya" className="kolleksiya-section snap-section">
-      <div className="section-header">
-        <span className="section-label">— Kolleksiya —</span>
-        <h2>Məhsullarımız</h2>
-        <div className="header-line" />
-      </div>
-      <div className="products-grid">
-        {PRODUCTS.map(p => <ProductCard key={p.name} p={p} />)}
+      <div className="kolleksiya-inner">
+        <div className="section-header">
+          <span className="section-label">— Kolleksiya —</span>
+          <h2 className="section-h2">Məhsullarımız</h2>
+          <div className="header-line" />
+        </div>
+        <div className="products-grid">
+          {PRODUCTS.map(p => <ProductCard key={p.name} p={p} />)}
+        </div>
       </div>
     </section>
   )
@@ -293,7 +295,7 @@ function Haqqimizda() {
       <div className={`about-container ${vis ? 'visible' : ''}`} ref={ref}>
         <div className="about-text">
           <span className="section-label">— Haqqımızda —</span>
-          <h2>Biz Kimik?</h2>
+          <h2 className="section-h2">Biz Kimik?</h2>
           <p>FARQLY — hər bir sifarişin arxasında bir hekayə olduğuna inanan premium aksesuar brendidir. Biz aksesuar satmırıq, <em>xatirə yaradırıq.</em></p>
           <p>Hər məhsul diqqətlə seçilir, premium keyfiyyətlə hazırlanır və yalnız onlayn çatdırılma ilə əldə edilir.</p>
           <div className="stats">
