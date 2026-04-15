@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 
 /* ─── constants ─── */
@@ -433,6 +434,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </>
   )
 }
