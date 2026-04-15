@@ -637,7 +637,7 @@ em.accent { font-style: italic; color: var(--accent); }
   }
   .s2-info {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden; 
     -webkit-overflow-scrolling: touch;
     border-right: none;
     border-top: 1px solid rgba(255,255,255,0.07);
