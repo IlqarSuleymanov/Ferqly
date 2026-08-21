@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/passport/:path*", "destination": "https://farqly-backend.onrender.com/passport/:path*" },
+    { "source": "/media/:path*", "destination": "https://farqly-backend.onrender.com/media/:path*" }
+  ]
+}
