@@ -142,8 +142,7 @@ function S2Ring() {
 
         {/* subtitle moved here */}
         <p className={`s2-subtitle ${vis ? 'vis' : ''}`}>
-          Nihani Üzük
-          Bu üzük adi aksesuar deyil.<br />
+          Nihani Üzük adi aksesuar deyil.<br />
           O, bir dəfə alınan seçim simvoludur.
         </p>
 
@@ -171,7 +170,7 @@ function S2Ring() {
             <li>Tək seçim konseptli üzük</li>
             <li>Xüsusi müqavilə sənədi</li>
             <li>Premium qablaşdırma</li>
-            <li>Çatdırılma</li>
+
           </ul>
         </div>
 
