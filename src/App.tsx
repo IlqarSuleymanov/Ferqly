@@ -142,7 +142,7 @@ function S2Ring() {
 
         {/* subtitle moved here */}
         <p className={`s2-subtitle ${vis ? 'vis' : ''}`}>
-          Bu üzük adi aksesuar deyil.<br />
+          Nihani Üzük adi aksesuar deyil.<br />
           O, bir dəfə alınan seçim simvoludur.
         </p>
 
@@ -170,7 +170,7 @@ function S2Ring() {
             <li>Tək seçim konseptli üzük</li>
             <li>Xüsusi müqavilə sənədi</li>
             <li>Premium qablaşdırma</li>
-            <li>Çatdırılma</li>
+
           </ul>
         </div>
 
@@ -202,7 +202,7 @@ function S2Ring() {
    SECTION 3 — KOLLEKSIYA
 ══════════════════════════════════════════ */
 const PRODUCTS = [
-  { badge: 'Eksklüziv', name: 'Yalnız Bir Dəfə Alınan Üzük', sub: 'Tək seçim simvolu', delay: 0   },
+  { badge: 'Eksklüziv', name: 'Nihani Üzük', sub: 'Tək seçim simvolu', delay: 0   },
   { badge: 'Populyar',  name: 'Stress Üzükləri',              sub: 'Paslanmayan Metal', delay: 120 },
   { badge: 'Yeni',      name: 'Kəpənək Boyunbağı',            sub: 'Gümüş · Fosfor',   delay: 240 },
 ]
@@ -350,7 +350,7 @@ function S5Footer() {
         <nav className="s5-nav">
           <h4>Naviqasiya</h4>
           <button onClick={() => go('s3')}>Kolleksiya</button>
-          <button onClick={() => go('s2')}>Yalnız Bir Dəfə Alınan Üzük</button>
+          <button onClick={() => go('s2')}>Nihani Üzük</button>
           <button onClick={() => go('s4')}>Haqqımızda</button>
         </nav>
 
