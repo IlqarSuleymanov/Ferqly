@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
+import { TLink } from './Transition'
+import { Lockup } from './Lockup'
 
 /* ─── constants ─── */
 const WA_LINK  = 'https://wa.me/994558566147'
@@ -70,6 +72,7 @@ function Navbar({ activeSection }: { activeSection: number }) {
         <li><button onClick={() => go('s3')}>Kolleksiya</button></li>
         <li><button onClick={() => go('s4')}>Haqqımızda</button></li>
         <li><button onClick={() => go('s5')}>Əlaqə</button></li>
+        <li><TLink to="/noir" label="FARQLY NOIR">Noir</TLink></li>
       </ul>
 
       <a href={WA_LINK} target="_blank" rel="noreferrer" className="nav-order">
@@ -101,7 +104,7 @@ function S1Hero() {
 
       {/* centred content */}
       <div className="s1-content">
-        <img src="/images/main-logo.png" alt="FARQLY" className="s1-logo" />
+        <Lockup to="/noir" className="s1-lockup" />
         <p className="s1-tagline">Adi olma, Fərqli ol!</p>
         <div className="s1-btns">
           <button
@@ -352,6 +355,7 @@ function S5Footer() {
           <button onClick={() => go('s3')}>Kolleksiya</button>
           <button onClick={() => go('s2')}>Nihani Üzük</button>
           <button onClick={() => go('s4')}>Haqqımızda</button>
+          <TLink to="/noir" label="FARQLY NOIR">FARQLY NOIR · Saatlar</TLink>
         </nav>
 
         <div className="s5-contact">
@@ -382,7 +386,9 @@ function S5Footer() {
    APP ROOT
 ══════════════════════════════════════════ */
 export default function App() {
-  const [entered,  setEntered]  = useState(false)
+  const [entered,  setEntered]  = useState(() => {
+    try { return sessionStorage.getItem('farqly-entered') === '1' } catch { return false }
+  })
   const [exiting,  setExiting]  = useState(false)
   const [activeS,  setActiveS]  = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -407,6 +413,7 @@ export default function App() {
   }, [entered])
 
   const handleEnter = () => {
+    try { sessionStorage.setItem('farqly-entered', '1') } catch { /* private mode */ }
     setExiting(true)
     setTimeout(() => setEntered(true), 700)
   }
