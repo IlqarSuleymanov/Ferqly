@@ -1,0 +1,44 @@
+/* ═══════════════════════════════════════════
+   Page-transition curtain  (FARQLY ⇄ FARQLY NOIR)
+   Durations must match COVER_MS / REVEAL_MS in Transition.tsx
+═══════════════════════════════════════════ */
+
+.curtain {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: #000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.curtain[data-phase='cover'] {
+  visibility: visible; pointer-events: all;
+  animation: curtainClose 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.curtain[data-phase='reveal'] {
+  visibility: visible; pointer-events: all;
+  opacity: 1;
+  animation: curtainOpen 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.curtain-label {
+  font-family: var(--font-ui, sans-serif);
+  font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+  font-weight: 300;
+  letter-spacing: 0.55em;
+  padding-left: 0.55em;            /* optically centres the tracked text */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+}
+.curtain[data-phase='cover']  .curtain-label { animation: curtainText 0.65s 0.15s ease forwards; }
+.curtain[data-phase='reveal'] .curtain-label { opacity: 1; animation: curtainTextOut 0.5s ease forwards; }
+
+@keyframes curtainClose   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes curtainOpen    { 0%, 25% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes curtainText    { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes curtainTextOut { to { opacity: 0; } }
+
+/* shown while the NOIR page chunk is still downloading (e.g. direct visit) */
+.route-fallback { position: fixed; inset: 0; background: #080808; }

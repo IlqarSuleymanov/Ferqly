@@ -1,0 +1,24 @@
+/* FARQLY logo + NOIR wordmark.  Everything scales from --lw (logo width). */
+.lockup {
+  --lw: 360px;
+  display: flex; align-items: center; justify-content: center;
+  gap: calc(var(--lw) * 0.1);
+}
+.lockup-logo { display: block; width: var(--lw); height: auto; max-width: none; }
+
+.lockup-noir {
+  font-family: 'Marcellus', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: calc(var(--lw) * 0.14);
+  line-height: 1;
+  letter-spacing: 0.3em;
+  margin-right: -0.3em;            /* cancels the empty space after the last letter */
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+}
+a.lockup-noir:hover, a.lockup-noir:focus-visible { color: #8cbdeb; }
+
+/* the logo PNG has empty space above and below the artwork — trim it */
+.lockup--tight { margin-block: calc(var(--lw) * -0.12); }

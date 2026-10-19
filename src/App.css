@@ -233,19 +233,23 @@ em.accent { font-style: italic; color: var(--accent); }
 .nav-brand:hover { color: var(--accent); }
 
 .nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links button {
+.nav-links button,
+.nav-links a {
   font-family: var(--font-ui);
   font-size: 0.6rem; font-weight: 300;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(255,255,255,0.6);
   transition: color 0.3s; position: relative;
 }
-.nav-links button::after {
+.nav-links button::after,
+.nav-links a::after {
   content: ''; position: absolute; bottom: -3px; left: 0;
   width: 0; height: 1px; background: var(--accent); transition: width 0.3s;
 }
-.nav-links button:hover { color: var(--white); }
-.nav-links button:hover::after { width: 100%; }
+.nav-links button:hover,
+.nav-links a:hover { color: var(--white); }
+.nav-links button:hover::after,
+.nav-links a:hover::after { width: 100%; }
 
 .nav-order {
   display: inline-flex; align-items: center; gap: 0.4rem;
@@ -291,6 +295,10 @@ em.accent { font-style: italic; color: var(--accent); }
   animation: fadeUp 1s 0.2s var(--ease) both;
 }
 
+.s1-lockup {
+  --lw: min(52vw, 780px);
+  filter: drop-shadow(0 0 60px rgba(0,0,0,0.6));
+}
 .s1-logo {
   width: min(52vw, 620px);
   height: auto;
@@ -547,13 +555,15 @@ em.accent { font-style: italic; color: var(--accent); }
   font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase;
   color: rgba(255,255,255,0.25); margin-bottom: 1rem; font-weight: 400;
 }
-.s5-nav button {
+.s5-nav button,
+.s5-nav a {
   display: block; font-size: 0.72rem; font-weight: 300;
   color: rgba(255,255,255,0.45); margin-bottom: 0.5rem;
   text-align: left; letter-spacing: 0.03em;
   transition: color 0.25s, padding-left 0.25s;
 }
-.s5-nav button:hover { color: var(--accent); padding-left: 4px; }
+.s5-nav button:hover,
+.s5-nav a:hover { color: var(--accent); padding-left: 4px; }
 
 .s5-phone {
   font-size: 0.95rem; font-weight: 300;
@@ -609,7 +619,8 @@ em.accent { font-style: italic; color: var(--accent); }
     z-index: 999;
   }
   /* bigger tap targets for nav items */
-  .nav-links button { padding: 0.6rem 0; min-height: 44px; }
+  .nav-links button,
+  .nav-links a { padding: 0.6rem 0; min-height: 44px; display: inline-flex; align-items: center; }
   .burger { display: flex; padding: 10px; margin: -10px; } /* larger tap area */
 
   /* ── Intro ── */
@@ -618,7 +629,8 @@ em.accent { font-style: italic; color: var(--accent); }
   .intro-loc  { left: var(--px); }
 
   /* ── S1 Hero ── */
-  .s1-logo    { width: min(78vw, 360px); }
+  .s1-lockup  { --lw: min(78vw, 360px); flex-direction: column; gap: 0; }
+  .s1-lockup .lockup-noir { margin-top: -1.2rem; }
   .s1-tagline { font-size: clamp(1.1rem, 5vw, 1.6rem); }
   .s1-btns    { flex-direction: column; align-items: center; gap: 0.75rem; }
   .s1-btns .btn-outline { min-height: 44px; width: 100%; max-width: 280px; justify-content: center; }
@@ -752,7 +764,8 @@ em.accent { font-style: italic; color: var(--accent); }
   .s5-bar { grid-template-columns: 1fr; padding: 2.5rem var(--px) 1.5rem; gap: 2rem; }
   .s5-copy { flex-direction: column; gap: 0.4rem; text-align: center; }
   /* nav buttons — bigger tap targets */
-  .s5-nav button { min-height: 40px; display: flex; align-items: center; }
+  .s5-nav button,
+  .s5-nav a { min-height: 40px; display: flex; align-items: center; }
 }
 
 /* ══════════════════════════════════════
