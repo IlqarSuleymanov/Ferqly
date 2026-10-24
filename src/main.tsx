@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import Routes from './Routes.tsx'
+import { TransitionProvider } from './Transition.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <TransitionProvider>
+      <Routes />
+    </TransitionProvider>
   </StrictMode>,
 )
